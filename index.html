@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dareen Alharthi | Portfolio</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Reset ALL link colors first */
+        a:link,
+        a:visited {
+            color: #74b9ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #99c9ff;
+        }
+
+        /* Theme variables */
+        html[data-theme="light"] {
+            --bg-primary: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --border-color: #e9ecef;
+        }
+
+        html[data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --border-color: #404040;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-primary);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        #theme-toggle:hover {
+            background: var(--border-color);
+        }
+
+        #theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-primary);
+        }
+
+        .header-section {
+            margin-bottom: 2rem;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .header-text {
+            flex-grow: 1;
+        }
+
+        .header-text h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .header-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .horizontal-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .horizontal-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Explicitly style about-text links */
+        .about-text a:link,
+        .about-text a:visited {
+            color: #74b9ff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .about-text a:hover {
+            color: #99c9ff;
+            text-decoration: underline;
+        }
+
+        #news {
+            margin-top: 3rem;
+        }
+
+        #news h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        #news ul {
+            list-style: none;
+        }
+
+        #news li {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        #news .authors {
+            display: block;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            padding-left: 1rem;
+        }
+
+        #news .author-self {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        #news li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #74b9ff;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .horizontal-links {
+                justify-content: center;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path class="moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            <circle class="sun" cx="12" cy="12" r="5"></circle>
+            <line class="sun" x1="12" y1="1" x2="12" y2="3"></line>
+            <line class="sun" x1="12" y1="21" x2="12" y2="23"></line>
+            <line class="sun" x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line class="sun" x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line class="sun" x1="1" y1="12" x2="3" y2="12"></line>
+            <line class="sun" x1="21" y1="12" x2="23" y2="12"></line>
+            <line class="sun" x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line class="sun" x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </button>
+    
+    <div class="content">
+        <div class="header-section">
+            <div class="header-container">
+                <div class="profile-photo">
+                    <img src="photo.gif" alt="Dareen Alharthi">
+                </div>
+                <div class="header-text">
+                    <h2>Dareen Alharthi</h2>
+                    <p>/dɑːriːn ɑlhɑːrθi/ | دارين الحارثي</p>
+                    <nav class="horizontal-links">
+                        <a href="index.html">🏠 Home</a>
+                        <a href="blog.html">📝 Blog</a>
+                        <a href="https://scholar.google.com/citations?user=jBtEAgIAAAAJ&hl=en">🎓 Google Scholar</a>
+                        <a href="Dareen_Alharthi.pdf" target="_blank">📄 CV</a>
+                    </nav>
+                </div>
+            </div>
+            <p class="about-text">
+                I am a Master's student at <a href="https://www.lti.cs.cmu.edu">Carnegie Mellon University's Language Technologies Institute</a>, working with Professor Bhiksha Raj at the <a href="https://www.cs.cmu.edu/~bhiksham/">Machine Learning for Signal Processing (MLSP) Lab</a>. Previously, I received my Bachelor's degree in Computer Science from <a href="https://imamu.edu.sa/en/">Imam Mohammad ibn Saud Islamic University</a>. My research interests include voice privacy, biometric estimation from speech signals, and voice manipulation techniques. I am particularly interested in developing methods to protect speaker privacy while maintaining speech utility.
+            </p>
+        </div>
+
+        <hr>
+
+            <section id="news">
+                <h2>News</h2>
+                <ul>
+                    <li>[Dec 2024] "Tesselated Linear Model for Age Prediction from Voice" accepted at IEEE ICASSP 2025.<br>
+                        <span class="authors"><span class="author-self">D. Alharthi</span>, M. Zamani, B. Raj, R. Singh</span>
+                    </li>
+                    <li>[Oct 2024] "Evaluating Speech Synthesis by Training Recognizers on Synthetic Speech" accepted at SynData4GenAI Workshop, INTERSPEECH 2024.<br>
+                        <span class="authors"><span class="author-self">D. Alharthi</span>, R. Sharma, H. Dhamyal, S. Maiti, B. Raj, R. Singh</span>
+                    </li>
+                    <li>[Jul 2024] "PAM: Prompting Audio-Language Models for Audio Quality Assessment" accepted at INTERSPEECH 2024.<br>
+                        <span class="authors">S. Deshmukh, <span class="author-self">D. Alharthi</span>, B. Elizalde, H. Gamper, M. Al Ismail, R. Singh, B. Raj, H. Wang</span>
+                    </li>
+                </ul>
+            </section>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or system preference
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.setAttribute('data-theme', savedTheme);
+
+        // Update button appearance based on theme
+        if (savedTheme === 'dark') {
+            themeToggle.querySelector('.moon').style.display = 'none';
+            themeToggle.querySelector('.sun').style.display = 'block';
+        } else {
+            themeToggle.querySelector('.moon').style.display = 'block';
+            themeToggle.querySelector('.sun').style.display = 'none';
+        }
+
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon visibility
+            if (newTheme === 'dark') {
+                themeToggle.querySelector('.moon').style.display = 'none';
+                themeToggle.querySelector('.sun').style.display = 'block';
+            } else {
+                themeToggle.querySelector('.moon').style.display = 'block';
+                themeToggle.querySelector('.sun').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

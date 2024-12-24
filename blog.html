@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Dareen Alharthi</title>
+    <style>
+        /* Modern Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Light theme variables */
+        html[data-theme="light"] {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --text-muted: #868e96;
+            --border-color: #e9ecef;
+            --link-color: #228be6;
+            --link-hover: #1c7ed6;
+            --shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Dark theme variables */
+        html[data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --border-color: #404040;
+            --link-color: #74b9ff;
+            --link-hover: #99c9ff;
+            --shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--bg-primary);
+        }
+
+        header {
+            margin-bottom: 40px;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--link-color);
+        }
+
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        #theme-toggle:hover {
+            background: var(--border-color);
+        }
+
+        #articles {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        article {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        article:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        article p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        article p:first-of-type {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        article a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        article a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            #articles {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <!-- <a href="blog.html">Blog</a> -->
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path class="moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    <circle class="sun" cx="12" cy="12" r="5"></circle>
+                    <line class="sun" x1="12" y1="1" x2="12" y2="3"></line>
+                    <line class="sun" x1="12" y1="21" x2="12" y2="23"></line>
+                    <line class="sun" x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line class="sun" x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line class="sun" x1="1" y1="12" x2="3" y2="12"></line>
+                    <line class="sun" x1="21" y1="12" x2="23" y2="12"></line>
+                    <line class="sun" x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line class="sun" x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <section id="articles">
+        <!-- <h2>Articles</h2> -->
+        <article>
+            <h3>LLMs Preferences vs Humans Preferences</h3>
+            <p>Published on Jan 15, 2025</p>
+            <p>Exploring the divergence between how Large Language Models and humans evaluate language quality, and what this means for AI alignment...</p>
+            <a href="articles/llms_vs_humans.html">Read more</a>
+        </article>
+        <!-- <article>
+            <h3>Tesselated Linear Model for Age Prediction from Voice</h3>
+            <p>Published on Dec 15, 2024</p>
+            <p>Exploring our recent work on age prediction from voice using tessellated linear models...</p>
+            <a href="articles/age-prediction.html">Read more</a>
+        </article>
+        <article>
+            <h3>Evaluating Speech Synthesis</h3>
+            <p>Published on Oct 20, 2024</p>
+            <p>Discussing our approach to evaluating speech synthesis through recognizer training...</p>
+            <a href="articles/speech-synthesis.html">Read more</a>
+        </article> -->
+    </section>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference, otherwise use system preference
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.setAttribute('data-theme', savedTheme);
+
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+</html>
